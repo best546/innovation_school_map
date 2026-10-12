@@ -12,7 +12,7 @@
 
 ## 지도와 아파트 배정
 
-무료 공개 지도인 [OpenStreetMap](https://www.openstreetmap.org/copyright)과 Leaflet을 사용합니다. API 키와 실행 서버, 별도 빌드 과정은 필요 없습니다. 지도 라이브러리는 동봉했으며 배경 타일만 인터넷으로 불러옵니다.
+무료 공개 지도인 [OpenStreetMap](https://www.openstreetmap.org/copyright)과 Leaflet을 사용합니다. API 키와 실행 서버, 별도 빌드 과정은 필요 없습니다. 지도 라이브러리는 동봉했으며 배경 타일은 인터넷으로 불러옵니다.
 
 초등학교 상세의 **‘초등학교 통학구역 표시’** 버튼은 해당 학교와 연결된 공식 구역을 표시합니다. 2026년 9월 20일 기준 918개 구역, 601개 학교의 연계 정보를 수록했습니다. 3m 허용 오차로 단순화한 표시용 경계이며 개별 아파트의 배정을 판정하는 데 사용하지 않습니다. 공동통학구역은 복수 학교와 연결됩니다.
 
@@ -30,6 +30,10 @@ OpenStreetMap 공용 타일은 유료 API 계약 없이 사용할 수 있지만 
 4. 배포가 완료되면 `https://best546.github.io/innovation_school_map/`에서 엽니다.
 
 모든 파일 경로를 상대 경로로 작성해 저장소 이름이 붙는 프로젝트 Pages에서도 동작합니다. `.nojekyll` 파일을 포함했습니다. [GitHub 공식 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+
+## 접속 통계
+
+접속 통계는 `index.html`의 Google Analytics 태그로 수집합니다. 측정 ID는 `G-11XE7ZHEBP`입니다. 태그 스크립트는 Google에서 비동기로 불러옵니다. 분석 계정을 바꾸려면 태그 URL과 `gtag('config', ...)`의 ID를 함께 수정하세요.
 
 ## 로컬 미리보기
 
