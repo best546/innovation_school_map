@@ -6,7 +6,7 @@ const root = path.resolve(__dirname, '..');
 const schools = JSON.parse(fs.readFileSync(path.join(root, 'data/schools.json'), 'utf8'));
 const meta = JSON.parse(fs.readFileSync(path.join(root, 'data/metadata.json'), 'utf8'));
 const designations = JSON.parse(fs.readFileSync(path.join(root, 'data/designations.json'), 'utf8'));
-const {hasCoordinates, filterSchools, toCsv} = require('../core.js');
+const {hasCoordinates, filterSchools, suggestSchools, toCsv} = require('../core.js');
 const state = {query:'', region:'', level:'', verification:''};
 assert.equal(schools.length, meta.total);
 assert.equal(designations.length, schools.length);
@@ -36,6 +36,20 @@ const target = schools.find(s => s.name === '서울관악초등학교');
 assert.ok(target, 'known official school missing');
 const search = filterSchools(schools, meta.sources, {...state, query:'서울 관악초등학교',region:'서울',verification:'official'});
 assert.deepEqual(search.map(s => s.id), [target.id], 'multi-token search/combined filters');
+for (const query of ['관악초교','서울관악초','서울시 관악 초등','ㅅㅇㄱㅇㅊ','ㄱㅇ초','청룡4길 49']) {
+  assert.ok(filterSchools(schools,meta.sources,{...state,query}).some(s=>s.id===target.id), `search missed ${query}`);
+}
+const ranked = filterSchools(schools,meta.sources,{...state,query:'관악'});
+assert.ok(ranked.slice(0,2).some(s=>s.id===target.id), 'school name must rank before district-only matches');
+assert.equal(filterSchools(schools,meta.sources,{...state,query:'관악초교',region:'부산'}).length,0,'search must preserve selected filters');
+assert.ok(filterSchools(schools,meta.sources,{...state,query:'세종 조치원여중'}).some(s=>s.name==='세종중학교'),'documented former name alias');
+assert.ok(filterSchools(schools,meta.sources,{...state,query:'부산반송중'}).some(s=>s.name==='반송중학교'),'region + school abbreviation');
+assert.ok(!filterSchools(schools,meta.sources,{...state,query:'승지초등학교'}).some(s=>s.name==='숭지초등학교'),'uncertain identity must not become an alias');
+assert.equal(filterSchools(schools,meta.sources,{...state,query:'관아초교'}).length,0,'typo suggestions must not silently alter results');
+const similar = suggestSchools(schools,meta.sources,{...state,query:'관아초교'});
+assert.ok(similar.approximate && similar.schools.some(s=>s.id===target.id),'single-typo school suggestion');
+assert.equal(similar.schools[0].id,target.id,'closest Hangul spelling should lead typo suggestions');
+assert.ok(suggestSchools(schools,meta.sources,{...state,query:'서울관악초'}).schools[0].id===target.id,'autocomplete should rank the named school first');
 assert.equal(filterSchools(schools, meta.sources, {...state,query:'존재하지않는검색어_991023'}).length, 0);
 assert.ok(filterSchools(schools, meta.sources, {...state,level:'기타'}).every(s => ['유치원','특수학교'].includes(s.level)));
 const csv = toCsv([target, {...target,name:'=SUM(1,2)"'}], meta.sources);
@@ -44,6 +58,7 @@ assert.equal(csv.split('\r\n').length, 3);
 assert.ok(csv.includes('"\'=SUM(1,2)"""'), 'CSV formula guard or quote escaping missing');
 for (const source of Object.values(meta.sources)) assert.equal(new URL(source.url).protocol, 'https:');
 console.log(`PASS · ${schools.length} schools · ${meta.official} official · ${meta.mapped} mapped · filters/CSV/data integrity`);
+console.log('PASS · abbreviations/region aliases/initials/ranking/former names/typo suggestions');
 
 const zones = JSON.parse(fs.readFileSync(path.join(root, 'data/elementary-zones.geojson'), 'utf8'));
 assert.equal(zones.type, 'FeatureCollection');
