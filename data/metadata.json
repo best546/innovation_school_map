@@ -1,0 +1,90 @@
+{
+  "collectedAt": "2026-10-13",
+  "locationDate": "2026-10-01",
+  "scope": "확보한 지역별 목록 통합 · 전국 전수 아님",
+  "sources": {
+    "seoul": {
+      "title": "서울교육청 · 2026 혁신미래학교 운영 기본 계획 (참고 6)",
+      "url": "https://www.sen.go.kr/user/bbs/BD_selectBbs.do?q_bbsSn=1155&q_bbsDocNo=20260209153427680",
+      "date": "2026-03-01",
+      "kind": "official"
+    },
+    "gwangju": {
+      "title": "교육청 · 2026 빛고을혁신학교 지정 현황",
+      "url": "https://www.gen.go.kr/sub/page.php?page_code=doc_22_02",
+      "date": "2026",
+      "kind": "official"
+    },
+    "gyeongnam": {
+      "title": "경남교육청 · 2026 행복학교·행복나눔학교 현황",
+      "url": "https://www.gne.go.kr/haengbok/happy/map.jsp",
+      "date": "2026",
+      "kind": "official"
+    },
+    "jeonnam": {
+      "title": "교육청 · 전남혁신학교 현황",
+      "url": "https://www.jne.go.kr/innosc/cm/cntnts/cntntsView.do?cntntsId=612&mi=1764",
+      "date": "2026-06-04",
+      "kind": "official"
+    },
+    "jeju": {
+      "title": "제주교육청 · 제주형 자율학교 운영 현황 (다혼디배움학교만)",
+      "url": "https://www.jje.go.kr/index.jje?menuCd=DOM_000000106002011001",
+      "date": "2026-03-01",
+      "kind": "official"
+    },
+    "ulsan": {
+      "title": "울산교육청 · 서로나눔학교 운영 현황",
+      "url": "https://use.go.kr/nanum/nanumschool/operate.jsp",
+      "date": "2026",
+      "kind": "official"
+    },
+    "wiki": {
+      "title": "나무위키 혁신학교/목록 (공개 미러 열람)",
+      "url": "https://namu.wiki/w/혁신학교/목록",
+      "mirror": "https://m.namu.moe/w/혁신학교/목록",
+      "date": "기준일 미상 · 미러 문서 수정 2026-07-19",
+      "kind": "reference",
+      "license": "CC BY-NC-SA 2.0 KR",
+      "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/2.0/kr/"
+    },
+    "locations": {
+      "title": "한국교육시설안전원 · 초중등학교위치",
+      "url": "https://schoolzone.emac.kr/publicData/publicDataList.do",
+      "portal": "https://www.data.go.kr/data/15021148/standard.do",
+      "date": "2026-10-01",
+      "kind": "location",
+      "download": "https://schoolzone.emac.kr/publicData/publicDataFileDownload.do?nttId=2967&atchFileId=FILE_000000100002997&fileSn=0"
+    },
+    "zones": {
+      "title": "한국교육시설안전원 · 초등학교 통학구역 및 학교-학구도 연계정보",
+      "url": "https://schoolzone.emac.kr/publicData/publicDataList.do",
+      "date": "2026-09-20",
+      "kind": "catchment"
+    }
+  },
+  "total": 1080,
+  "mapped": 1035,
+  "byRegion": {
+    "경기": 471,
+    "경남": 172,
+    "광주권": 67,
+    "부산": 42,
+    "서울": 253,
+    "세종": 3,
+    "울산": 19,
+    "인천": 1,
+    "전남권": 17,
+    "전북": 2,
+    "제주": 28,
+    "충남": 5
+  },
+  "official": 556,
+  "excluded": 6,
+  "catchments": {
+    "features": 918,
+    "schools": 601,
+    "simplificationMeters": 3,
+    "date": "2026-09-20"
+  }
+}

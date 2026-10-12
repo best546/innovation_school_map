@@ -1,0 +1,74 @@
+[
+  {
+    "name": "청솔중학교",
+    "region": "경기",
+    "district": "성남시",
+    "source": "wiki",
+    "program": "혁신학교",
+    "note": "참고 목록 수록 · 현재 지정 여부 미확인",
+    "level": "중학교",
+    "reason": "2025-03 폐교 확인.",
+    "verificationUrl": "https://www.goe.go.kr/goe/na/ntt/selectNttInfo.do?mi=&nttSn=107934",
+    "checkedAt": "2026-10-13"
+  },
+  {
+    "name": "기흥중학교",
+    "region": "경기",
+    "district": "용인시",
+    "source": "wiki",
+    "program": "혁신학교",
+    "note": "참고 목록 수록 · 현재 지정 여부 미확인",
+    "level": "중학교",
+    "reason": "옛 학교는 2019년 폐교. 2026-09 재개교한 동명 학교의 현재 혁신학교 지정 여부는 확인하지 못했으므로 옛 명단을 연결하지 않음.",
+    "verificationUrl": "https://www.goe.go.kr/resource/old/BBSMSTR_000000000200/BBS_202303030440433720.pdf",
+    "checkedAt": "2026-10-13"
+  },
+  {
+    "name": "방초초등학교",
+    "region": "경기",
+    "district": "안성시",
+    "source": "wiki",
+    "program": "혁신학교",
+    "note": "참고 목록 수록 · 현재 지정 여부 미확인",
+    "level": "초등학교",
+    "reason": "학교알리미에서 폐교 확인.",
+    "verificationUrl": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=b518844a-5a27-4fbc-bb13-a99f4755f9f5",
+    "checkedAt": "2026-10-13"
+  },
+  {
+    "name": "군서중학교",
+    "region": "경기",
+    "district": "시흥시",
+    "source": "wiki",
+    "program": "혁신학교",
+    "note": "참고 목록 수록 · 현재 지정 여부 미확인",
+    "level": "중학교",
+    "reason": "2021-02-28 폐교, 군서미래국제학교로 변경. 옛 지정 이력을 새 학교에 승계하지 않음.",
+    "verificationUrl": "https://goeia.go.kr/arch/g01050601_02.asp?Page=1&SchoolArea=%EC%8B%9C%ED%9D%A5&SchoolID=fpjlr3hy&idx=184",
+    "checkedAt": "2026-10-13"
+  },
+  {
+    "name": "괘법초등학교",
+    "region": "부산",
+    "district": "부산광역시",
+    "source": "wiki",
+    "program": "혁신학교",
+    "note": "참고 목록 수록 · 현재 지정 여부 미확인",
+    "level": "초등학교",
+    "reason": "학교알리미에서 폐교 확인.",
+    "verificationUrl": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=ad0ef2b9-18d2-40bf-ba5d-c50fc90d292f",
+    "checkedAt": "2026-10-13"
+  },
+  {
+    "name": "위봉초등학교",
+    "region": "부산",
+    "district": "부산광역시",
+    "source": "wiki",
+    "program": "혁신학교",
+    "note": "참고 목록 수록 · 현재 지정 여부 미확인",
+    "level": "초등학교",
+    "reason": "학교알리미에서 폐교 확인. 통폐합 학교에 옛 지정 이력을 승계하지 않음.",
+    "verificationUrl": "https://www.schoolinfo.go.kr/ei/ss/Pneiss_b01_s0.do?SHL_IDF_CD=d3c73036-b07d-43c6-b17a-e71efb065bc3",
+    "checkedAt": "2026-10-13"
+  }
+]

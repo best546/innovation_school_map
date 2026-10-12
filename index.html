@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="전국 혁신학교 지정 명단과 위치. 교육청 공식 자료와 참고 목록의 출처 및 수집 범위를 구분해 표시합니다.">
+  <meta name="theme-color" content="#12493e">
+  <title>전국 혁신학교 현황</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="./vendor/markercluster/MarkerCluster.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./vendor/leaflet/leaflet.js"></script>
+  <script defer src="./vendor/markercluster/leaflet.markercluster.js"></script>
+  <script defer src="./config.js"></script>
+  <script defer src="./core.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#search">학교 검색으로 이동</a>
+  <header class="header">
+    <a class="brand" href="./" aria-label="혁신학교 현황 처음으로"><span class="brand-icon">▦</span><span>혁신학교 현황</span></a>
+    <nav aria-label="자료 메뉴"><button id="sources-button" class="text-button">자료 출처 <span aria-hidden="true">↗</span></button><button id="download" class="download-button"><span aria-hidden="true">↓</span> <span>CSV 내려받기</span></button></nav>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar" aria-label="학교 검색과 목록">
+      <div class="sidebar-head">
+        <h1>전국 혁신학교 현황</h1>
+        <p class="intro">교육청 지정 명단과 참고 목록의 위치를 표시합니다.</p>
+        <div class="stats" aria-label="수집된 자료 현황"><div><strong id="total">—</strong><span>목록에 수록</span></div><div><strong id="official-total">—</strong><span>교육청 명단</span></div><div><strong id="region-total">—</strong><span>수록 지역</span></div></div>
+        <button class="coverage-note" id="coverage-button"><span class="info-icon">i</span><span>전국 전수 목록이 아닙니다.<br><b>지역별 수집 범위 확인하기 →</b></span></button>
+        <form id="filters" autocomplete="off">
+          <label class="searchbox"><span aria-hidden="true">⌕</span><input type="search" id="search" placeholder="학교명, 시·군·구, 주소 검색" aria-label="학교명, 시군구, 주소 검색"><kbd>/</kbd></label>
+          <div class="select-row"><label><span>지역</span><select id="region" aria-label="지역"><option value="">전체 지역</option></select></label><label><span>자료 확인</span><select id="verification" aria-label="자료 확인"><option value="">모든 자료</option><option value="official">교육청 명단만</option><option value="reference">참고 목록만</option><option value="unlocated">위치 미확인</option></select></label></div>
+          <div id="levels" class="level-chips" role="group" aria-label="학교급 선택"><button type="button" data-level="" class="active" aria-pressed="true">전체</button><button type="button" data-level="초등학교" aria-pressed="false"><i class="dot elementary"></i>초등</button><button type="button" data-level="중학교" aria-pressed="false"><i class="dot middle"></i>중등</button><button type="button" data-level="고등학교" aria-pressed="false"><i class="dot high"></i>고등</button><button type="button" data-level="기타" aria-pressed="false">유치원·특수</button></div>
+        </form>
+      </div>
+      <div class="list-head"><h2>학교 목록 <span id="result-count">—</span></h2><button id="reset" class="text-button">초기화 ↺</button></div>
+      <p class="list-sub" id="result-summary" role="status" aria-live="polite">자료를 불러오는 중입니다.</p>
+      <div id="school-list" class="school-list" aria-label="검색된 학교 목록"></div>
+      <div class="list-footer">수집일 <span id="collected-date">2026.10.13</span> <span>·</span> 지정 기준일은 출처별로 다릅니다.</div>
+    </aside>
+    <section class="map-panel" id="map-panel" aria-label="혁신학교 위치 지도">
+      <div id="map"></div>
+      <div class="map-caption"><span class="live-dot"></span><span id="map-count">학교 위치를 불러오는 중</span><span class="caption-separator">|</span><span>숫자를 누르면 확대됩니다</span></div>
+      <div class="map-actions"><button id="fit" title="검색 결과 전체 보기" aria-label="검색 결과 전체 보기">⊡</button><button id="locate" title="내 위치" aria-label="내 위치">◎</button></div>
+      <div class="legend"><span><i class="dot elementary"></i>초등</span><span><i class="dot middle"></i>중등</span><span><i class="dot high"></i>고등</span><span><i class="dot other"></i>기타</span><span class="legend-reference"><i class="ring"></i>참고 목록</span></div>
+      <div id="map-warning" class="map-warning" role="status" hidden></div>
+      <div id="detail" class="detail-card" hidden></div>
+    </section>
+  </main>
+  <nav class="mobile-tabs" aria-label="보기 방식"><button id="show-map" class="active" aria-pressed="true">⊡ 지도 보기</button><button id="show-list" aria-pressed="false">☷ 목록 보기 <span id="mobile-count"></span></button></nav>
+  <dialog id="sources-dialog" aria-labelledby="sources-title"><div class="dialog-head"><div><h2 id="sources-title">자료 출처와 수집 범위</h2></div><button id="close-sources" aria-label="닫기">×</button></div><div id="sources-content"></div><div class="dialog-footer"><button id="close-sources-bottom">지도로 돌아가기</button></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p>학교 지도를 보려면 JavaScript를 켜 주세요. <a href="./data/schools.json">학교 데이터 내려받기</a></p></noscript>
+</body>
+</html>
